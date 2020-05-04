@@ -6,7 +6,19 @@ import mutations from './mutations'
 
 Vue.use(Vuex)
 
+// 状態(state)AuthとBoardをVuexのstateで一元管理できるように定義
+const state = {
+  auth: {
+    token: null,
+    userId: null
+  },
+  board: {
+    lists: []
+  }
+}
+
 export default new Vuex.Store({
+  state,
   getters,
   actions,
   mutations,
