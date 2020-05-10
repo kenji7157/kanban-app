@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import KbnLoginForm from '@/components/molecules/KbnLoginForm.js'
+import KbnLoginForm from '@/components/molecules/KbnLoginForm.vue'
 
 describe('KbnLoginForm', () => {
   describe('プロパティ', () => {
@@ -108,7 +108,7 @@ describe('KbnLoginForm', () => {
         it('ログイン処理は無効', () => {
           loginForm.setData({
             email: 'foo@domain.com',
-            password: '12345678'
+            password: ''
           })
           expect(loginForm.vm.disableLoginAction).to.equal(true)
         })
@@ -120,7 +120,7 @@ describe('KbnLoginForm', () => {
             email: 'foo@domain.com',
             password: '12345678'
           })
-          expect(loginForm.vm.valid).to.equal(false)
+          expect(loginForm.vm.disableLoginAction).to.equal(false)
         })
       })
 
@@ -192,8 +192,8 @@ describe('KbnLoginForm', () => {
             const authInfo = onloginStub.args[0][0]
             expect(authInfo.email).to.equal(loginForm.vm.email)
             expect(authInfo.password).to.equal(loginForm.vm.password)
-            loginForm.vm.$nextTick(() => { // resolve内での状態の反映
-              expect(loginForm.vm.error).to.equal('login errro!') // エラーメッセージが設定される
+            loginForm.vm.$nextTick(() => {
+              expect(loginForm.vm.error).to.equal('login error!') // エラーメッセージが設定される
               expect(loginForm.vm.disableLoginAction).to.equal(false) // ログインアクションは可能
               done()
             })
