@@ -1,5 +1,5 @@
 exports.command = function (selector, event, keyCode) {
-  return this.execuve(function (selector, event, keyCode) {
+  return this.execute(function (selector, event, keyCode) {
     var e = document.createEvent('HTMLEvents')
     e.initEvent(event, true, true)
     if (keyCode) {
