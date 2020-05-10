@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import KbnLoginForm from '@/components/molecules/KbnLoginForm.spec.js'
+import KbnLoginForm from '@/components/molecules/KbnLoginForm.js'
 
 describe('KbnLoginForm', () => {
   describe('プロパティ', () => {
