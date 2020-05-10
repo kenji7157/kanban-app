@@ -4,9 +4,13 @@ import { Auth, List, Task } from '../api'
 /* eslint-enable no-unused-vars */
 
 export default {
-  login: ({ commit }) => {
-    // TODO
-    throw new Error('login action should be implemented')
+  login: ({ commit }, authInfo) => {
+    return Auth.login(authInfo)
+      .then(({ token, userId }) => {
+        localStorage.setItem('token', token)
+        commit(types.AUTH_LOGIN, { token, userId })
+      })
+      .catch(err => { throw err })
   },
 
   fetchLists: ({ commit }) => {
